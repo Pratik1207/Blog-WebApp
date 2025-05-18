@@ -129,7 +129,8 @@ export class Service {
             return await this.bucket.createFile(
                 config.appwriteBucketId,       // Storage bucket ID
                 ID.unique(),                   // Generating a unique file ID
-                file,                          // File to upload
+                file,
+                console.log("file",file)                          // File to upload
             ) 
         } catch (error) {
             // Logging any errors encountered during upload

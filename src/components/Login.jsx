@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import Input from "../components/Input"
 import Logo from '../components/Logo'
 import {useDispatch} from "react-redux"
-import Service from "../Appwrite/services"
+import authService from '../Appwrite/auth'
 import {useForm} from "react-hook-form"
 
 function Login() {
@@ -17,9 +17,9 @@ function Login() {
     const login = async(data) => {
         setError("")
         try {
-            const session = await Service.login(data)
+            const session = await authService.login(data)
             if (session) {
-                const userData = await Service.getCurrentUser()
+                const userData = await authService.getCurrentUser()
                 if(userData) dispatch(authLogin(userData));
                 navigate("/")
             }

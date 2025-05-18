@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // Importing the service file which contains functions to interact with Appwrite
 import Service from '../Appwrite/services'
+import authService from '../Appwrite/auth'
 // React Router hooks for navigation and routing
 import { Link, useNavigate } from 'react-router-dom'
 // Redux action to update the auth state
@@ -25,7 +26,9 @@ function Signup() {
         setError("") // clear previous errors
         try {
             // Call Appwrite service to create a new account
-            const userData = await Service.createAccount(data)
+            const userData = await authService.createAccount(data)
+            console.log('userdAta', userData);
+            
 
             if (userData) {
                 // Get current logged-in user data
